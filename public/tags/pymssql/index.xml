@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pymssql on Keep Moving</title>
+    <link>https://sanghunka.github.io/tags/pymssql/</link>
+    <description>Recent content in Pymssql on Keep Moving</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 05 Dec 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://sanghunka.github.io/tags/pymssql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[Mac] pymssql 설치 에러날경우</title>
+      <link>https://sanghunka.github.io/2017/12/mac-pymssql-%EC%84%A4%EC%B9%98-%EC%97%90%EB%9F%AC%EB%82%A0%EA%B2%BD%EC%9A%B0/</link>
+      <pubDate>Tue, 05 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://sanghunka.github.io/2017/12/mac-pymssql-%EC%84%A4%EC%B9%98-%EC%97%90%EB%9F%AC%EB%82%A0%EA%B2%BD%EC%9A%B0/</guid>
+      <description> Mac에서 pymssql 설치시 에러가 나는경우 아래와 같은 방법을 시도해보자.  # 이미 freedts가 설치되어있다면 삭제해준다. # brew uninstall freedts brew install freetds091 brew link --force freetds@0.91 pip install pymssql </description>
+    </item>
+    
+  </channel>
+</rss>

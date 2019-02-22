@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rabbitmq on Keep Moving</title>
+    <link>https://sanghunka.github.io/tags/rabbitmq/</link>
+    <description>Recent content in Rabbitmq on Keep Moving</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 20 Dec 2017 14:00:00 +0900</lastBuildDate>
+    
+	<atom:link href="https://sanghunka.github.io/tags/rabbitmq/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[airflow] 6. Multi cluster에서 airflow 실행하기</title>
+      <link>https://sanghunka.github.io/2017/12/airflow-6.-multi-cluster%EC%97%90%EC%84%9C-airflow-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0/</link>
+      <pubDate>Wed, 20 Dec 2017 14:00:00 +0900</pubDate>
+      
+      <guid>https://sanghunka.github.io/2017/12/airflow-6.-multi-cluster%EC%97%90%EC%84%9C-airflow-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0/</guid>
+      <description>요약  다루는 내용  분산 인스턴스에서 각각 airflow worker를 실행하고 task를 분산해서 실행하는법 task가 실행될 worker를 명시적으로 지정하는법  테스트 환경  두 개의 Amazon EC2 Instance 사용 1번 Instance에 아래와 같이 셋팅  metadata database(postsgres) rabbitmq airflow webserver airflow worker  2번 Instance에 아래와 같이 셋팅  airflow worker    airflow configuration  1번과 2번 instance에 airflow를 설치한다. dag폴더에 동일한 파일을 넣어준다. dag폴더를 Git repository로 세팅하고 Chef, Puppet, Ansible등으로 동기화 해주는 방법도 있다.</description>
+    </item>
+    
+    <item>
+      <title>[airflow] 5. Pyspark sample code on airflow</title>
+      <link>https://sanghunka.github.io/2017/12/airflow-5.-pyspark-sample-code-on-airflow/</link>
+      <pubDate>Wed, 20 Dec 2017 13:00:00 +0900</pubDate>
+      
+      <guid>https://sanghunka.github.io/2017/12/airflow-5.-pyspark-sample-code-on-airflow/</guid>
+      <description>&lt;p&gt;Airflow에서 Pyspark task 실행하기&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[airflow] 5. Pyspark sample code on airflow</title>
+      <link>https://sanghunka.github.io/2017/12/airflow-5.-pyspark-sample-code-on-airflow/</link>
+      <pubDate>Wed, 20 Dec 2017 13:00:00 +0900</pubDate>
+      
+      <guid>https://sanghunka.github.io/2017/12/airflow-5.-pyspark-sample-code-on-airflow/</guid>
+      <description>&lt;p&gt;Airflow에서 Pyspark task 실행하기&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[airflow] 4. CeleryExecutor 사용하기</title>
+      <link>https://sanghunka.github.io/2017/12/airflow-4.-celeryexecutor-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/</link>
+      <pubDate>Tue, 05 Dec 2017 17:00:00 +0900</pubDate>
+      
+      <guid>https://sanghunka.github.io/2017/12/airflow-4.-celeryexecutor-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/</guid>
+      <description>&lt;p&gt;Airflow CeleryExecutor 사용하기&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

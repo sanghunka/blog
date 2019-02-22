@@ -1,0 +1,798 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.3-BETA">
+    <title>github.io 블로그를 만들어 보자</title>
+    <meta name="author" content="Sanghun Kang">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="https://sanghunka.github.io/favicon-btc.png">
+    
+
+    
+    <meta name="description" content="github page는 무엇인가? https://pages.github.com/ 는 깃허브에서 다이렉트로 호스팅해주는 서비스이다. 무료이다. 단 깃허브 계정 하나에 한 페이지만 만들 수 있다. 개발자들은 주로 포트폴리오나 cv, 또는 개인 블로그로 사용하고있다. 내 블로그인 sanghun.xyz도 깃허브 리포지터리를 이용한 페이지이다. 도메인은 aws에서 구매해 연결했다.
+참조 나는 codecademy의 deploy-a-website를 따라해서 만들었다. 쉽고 친절한 수업이라 따라만 해도 쉽게 웹사이트를 배포할 수 있다. 물론 배포까지만! 그 다음은 개인의 웹개발 역량에 달려있다. 나는 괜찮아보이는 공개 theme를 가져다 썼다. 아래의 방법은 codecademy의 수업을 요약한 것이다.">
+    <meta property="og:description" content="github page는 무엇인가? https://pages.github.com/ 는 깃허브에서 다이렉트로 호스팅해주는 서비스이다. 무료이다. 단 깃허브 계정 하나에 한 페이지만 만들 수 있다. 개발자들은 주로 포트폴리오나 cv, 또는 개인 블로그로 사용하고있다. 내 블로그인 sanghun.xyz도 깃허브 리포지터리를 이용한 페이지이다. 도메인은 aws에서 구매해 연결했다.
+참조 나는 codecademy의 deploy-a-website를 따라해서 만들었다. 쉽고 친절한 수업이라 따라만 해도 쉽게 웹사이트를 배포할 수 있다. 물론 배포까지만! 그 다음은 개인의 웹개발 역량에 달려있다. 나는 괜찮아보이는 공개 theme를 가져다 썼다. 아래의 방법은 codecademy의 수업을 요약한 것이다.">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="github.io 블로그를 만들어 보자">
+    <meta property="og:url" content="/2017/05/github.io-%EB%B8%94%EB%A1%9C%EA%B7%B8%EB%A5%BC-%EB%A7%8C%EB%93%A4%EC%96%B4-%EB%B3%B4%EC%9E%90/">
+    <meta property="og:site_name" content="Keep Moving">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Keep Moving">
+    <meta name="twitter:description" content="github page는 무엇인가? https://pages.github.com/ 는 깃허브에서 다이렉트로 호스팅해주는 서비스이다. 무료이다. 단 깃허브 계정 하나에 한 페이지만 만들 수 있다. 개발자들은 주로 포트폴리오나 cv, 또는 개인 블로그로 사용하고있다. 내 블로그인 sanghun.xyz도 깃허브 리포지터리를 이용한 페이지이다. 도메인은 aws에서 구매해 연결했다.
+참조 나는 codecademy의 deploy-a-website를 따라해서 만들었다. 쉽고 친절한 수업이라 따라만 해도 쉽게 웹사이트를 배포할 수 있다. 물론 배포까지만! 그 다음은 개인의 웹개발 역량에 달려있다. 나는 괜찮아보이는 공개 theme를 가져다 썼다. 아래의 방법은 codecademy의 수업을 요약한 것이다.">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/286acbc504a86d12987dfa5cd3782a41?s=640">
+    
+
+    
+      <meta property="og:image" content="//s3.amazonaws.com/clarityfm-production/attachments/546/default/logo-jekyll-udemy.png?1393285554">
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://sanghunka.github.io/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://sanghunka.github.io/">Keep Moving</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://sanghunka.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="//www.gravatar.com/avatar/286acbc504a86d12987dfa5cd3782a41?s=90" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://sanghunka.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/286acbc504a86d12987dfa5cd3782a41?s=110" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Sanghun Kang</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>COOL</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sanghunka.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sanghunka.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sanghunka.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sanghunka.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sanghunka.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/sanghunka" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sanghunka.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      github.io 블로그를 만들어 보자
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2017-05-09T00:00:00Z">
+        
+  May 9, 2017
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://sanghunka.github.io/categories/dev">dev</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <h2 id="github-page는-무엇인가">github page는 무엇인가?</h2>
+
+<p><a href="https://pages.github.com/">https://pages.github.com/</a> 는 깃허브에서 다이렉트로 호스팅해주는 서비스이다. 무료이다. 단 깃허브 계정 하나에 한 페이지만 만들 수 있다. 개발자들은 주로 포트폴리오나 cv, 또는 개인 블로그로 사용하고있다. 내 블로그인 sanghun.xyz도 깃허브 리포지터리를 이용한 페이지이다. 도메인은 aws에서 구매해 연결했다.</p>
+
+<h2 id="참조">참조</h2>
+
+<p>나는 codecademy의 <a href="https://www.codecademy.com/learn/deploy-a-website">deploy-a-website</a>를 따라해서 만들었다. 쉽고 친절한 수업이라 따라만 해도 쉽게 웹사이트를 배포할 수 있다. 물론 배포까지만! 그 다음은 개인의 웹개발 역량에 달려있다. 나는 괜찮아보이는 공개 theme를 가져다 썼다. 아래의 방법은 codecademy의 수업을 요약한 것이다.</p>
+
+<h2 id="how-to">How to</h2>
+
+<h3 id="repository-생성">repository 생성</h3>
+
+<ul>
+<li>repository를 생성할땐 naming convention을 따라야 한다.</li>
+<li><code>username.github.io</code> 형태로 만들어야 한다. 아니면 github에서 안해줌. 아마 한 계정당 하나의 페이지만 호스팅해주기 위해서 이런 정책을 만든게 아닌가 싶다.</li>
+</ul>
+
+<h3 id="지킬-설치">지킬 설치</h3>
+
+<p>Jekyll is a simple, blog-aware, static site generator for personal, project, or organization sites. static한 사이트를 만들기에 좋은 도구인것 같다. 사실 지킬 이전에도 이것저것 사용해봤으나 지킬이 제일 마음에 든다. 네이버 블로그나 티스토리는 뭔가 부족하고 워드프레스는 기능은 많은것 같은데 너무 무거운것 같았다. 무엇보다 github에서 jekyll을 권장하고 있다. 왜 그럴까 했더니 jekyll의 개발자가 github의 코파운더였던것!</p>
+
+<h4 id="mac-os-기준">mac OS 기준</h4>
+
+<pre><code class="language-zsh">#brew 설치
+/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+
+#ruby 설치
+brew install ruby
+
+#jekyll 설치
+gem install jekyll
+gem install jekyll bundler
+
+#jekyll 설치 확인
+jekyll -v
+</code></pre>
+
+<h3 id="웹사이트-생성">웹사이트 생성</h3>
+
+<pre><code class="language-zsh"># 새로운 웹사이트 생성
+jekyll new personal-website
+
+# 생성한 폴더로 이동
+cd personal-website
+
+# 실행
+jekyll serve
+
+# localhost:4000에서 실행되는걸 확인할 수 있다.
+</code></pre>
+
+<h3 id="jekyll폴더와-repository-연결">jekyll폴더와 repository 연결</h3>
+
+<pre><code class="language-zsh"># jekyll 폴더에서
+git init
+git remote add origin https://github.com/username/username.github.io.git
+</code></pre>
+
+<h2 id="후기">후기</h2>
+
+<p>참 좋은것 같다. 무엇보다도 무료이며 개발할 일이 없는 내 입장에선 블로그를 하면서나마 git을 사용하게된다는게 큰 장점이다. jekyll덕분에 웹개발도 그리고 루비도 공부하고 싶어진다. 일단은 jekyll의 구조를 학습해서 내 입맛대로 사이트를 꾸며보고 싶다.</p>
+
+<p>It&rsquo;s important to understand Jekyll&rsquo;s default directory structure and contents of your site:</p>
+
+<pre><code>_config.yml - This is a configuration file that contains many values that need to be edited only once. These values are used across your site, for example, your site's title, your e-mail, and more. Note that this is a .yml file, which you can learn more about here.
+_includes/ - This directory contains all the partials (code templates that keep you from repeating your code over and over) that your site uses to load common components, like the header and the footer.
+_posts/ - This directory is where blog posts are stored. New blog posts can be added and will be rendered with the site's styling, as long as the file name follows Jekyll's standard naming convention.
+_layouts/ - This directory contains templates that are used to style certain types of posts within the site. For example, new blog posts will use the HTML layout defined in post.html.
+You can learn more about the Jekyll directory structure here.
+</code></pre>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://sanghunka.github.io/tags/jekyll/">jekyll,</a>
+
+  <a class="tag tag--primary tag--small" href="https://sanghunka.github.io/tags/blog/">blog,</a>
+
+  <a class="tag tag--primary tag--small" href="https://sanghunka.github.io/tags/github/">github,</a>
+
+  <a class="tag tag--primary tag--small" href="https://sanghunka.github.io/tags/codecademy/">codecademy</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://sanghunka.github.io/2017/07/contents-is-king-by-bill-gates-%EC%A0%84%EB%AC%B8-%EB%B2%88%EC%97%AD/" data-tooltip="Contents is King by Bill Gates 전문 번역">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://sanghunka.github.io/2017/05/stratis-wallet-backup%ED%95%98%EA%B8%B0/" data-tooltip="stratis wallet backup하기">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanghunka.github.io/2017/05/github.io-%EB%B8%94%EB%A1%9C%EA%B7%B8%EB%A5%BC-%EB%A7%8C%EB%93%A4%EC%96%B4-%EB%B3%B4%EC%9E%90/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sanghunka.github.io/2017/05/github.io-%EB%B8%94%EB%A1%9C%EA%B7%B8%EB%A5%BC-%EB%A7%8C%EB%93%A4%EC%96%B4-%EB%B3%B4%EC%9E%90/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sanghunka.github.io/2017/05/github.io-%EB%B8%94%EB%A1%9C%EA%B7%B8%EB%A5%BC-%EB%A7%8C%EB%93%A4%EC%96%B4-%EB%B3%B4%EC%9E%90/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 <a href="https://github.com/sanghunka">sanghunka</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://sanghunka.github.io/2017/07/contents-is-king-by-bill-gates-%EC%A0%84%EB%AC%B8-%EB%B2%88%EC%97%AD/" data-tooltip="Contents is King by Bill Gates 전문 번역">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://sanghunka.github.io/2017/05/stratis-wallet-backup%ED%95%98%EA%B8%B0/" data-tooltip="stratis wallet backup하기">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanghunka.github.io/2017/05/github.io-%EB%B8%94%EB%A1%9C%EA%B7%B8%EB%A5%BC-%EB%A7%8C%EB%93%A4%EC%96%B4-%EB%B3%B4%EC%9E%90/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sanghunka.github.io/2017/05/github.io-%EB%B8%94%EB%A1%9C%EA%B7%B8%EB%A5%BC-%EB%A7%8C%EB%93%A4%EC%96%B4-%EB%B3%B4%EC%9E%90/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sanghunka.github.io/2017/05/github.io-%EB%B8%94%EB%A1%9C%EA%B7%B8%EB%A5%BC-%EB%A7%8C%EB%93%A4%EC%96%B4-%EB%B3%B4%EC%9E%90/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsanghunka.github.io%2F2017%2F05%2Fgithub.io-%25EB%25B8%2594%25EB%25A1%259C%25EA%25B7%25B8%25EB%25A5%25BC-%25EB%25A7%258C%25EB%2593%25A4%25EC%2596%25B4-%25EB%25B3%25B4%25EC%259E%2590%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fsanghunka.github.io%2F2017%2F05%2Fgithub.io-%25EB%25B8%2594%25EB%25A1%259C%25EA%25B7%25B8%25EB%25A5%25BC-%25EB%25A7%258C%25EB%2593%25A4%25EC%2596%25B4-%25EB%25B3%25B4%25EC%259E%2590%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fsanghunka.github.io%2F2017%2F05%2Fgithub.io-%25EB%25B8%2594%25EB%25A1%259C%25EA%25B7%25B8%25EB%25A5%25BC-%25EB%25A7%258C%25EB%2593%25A4%25EC%2596%25B4-%25EB%25B3%25B4%25EC%259E%2590%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/286acbc504a86d12987dfa5cd3782a41?s=110" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Sanghun Kang</h4>
+    
+      <div id="about-card-bio"><strong>COOL</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Data Engineer&amp;Analyst
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        South Korea
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2018/01/zsh%EC%97%90-%EC%84%A4%EC%A0%95%ED%95%B4%EB%91%94-alias%EB%A5%BC-crontab%EC%97%90-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B3%A0-%EC%8B%B6%EC%9D%84%EB%95%8C/">
+                <h3 class="media-heading">zsh에 설정해둔 alias를 crontab에 사용하고 싶을때</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Put your functions in .zshenv.
+.zshenv is sourced on all invocations of the shell, unless the -f option is set. It should contain commands to set the command search path, plus other important environment variables. .zshenv should not contain commands that produce output or assume the shell is attached to a tty.
+.zshrc is sourced in interactive shells. It should contain commands to set up aliases, functions, options, key bindings, etc.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2018/01/%EC%95%A0%EB%93%9C%EC%9B%8C%EC%A6%88-%ED%95%99%EC%8A%B5/">
+                <h3 class="media-heading">애드워즈 학습</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">강의 1: 온라인 광고의 가치에 대한 이해 이 모듈에서 학습할 내용
+ 온라인 광고 및 애드워즈의 장점 Google의 광고 네트워크 애드워즈의 작동 원리  1.1 온라인 광고 및 애드워즈의 장점  광고 타겟팅  키워드 광고 위치 연령,위치,언어 요일,시간대,게재빈도 기기  비용관리  월, 일, 또는 광고 단위로 지출 비용 설정 가능  광고 효과 측정 캠페인 관리  MCC, 애드워즈 에디터등   애드워즈 광고
+1.2 Google의 광고 네트워크  검색 네트워크</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2017/12/raspberrypi-stretch-with-desktop%EC%97%90%EC%84%9C-%EC%8A%A4%ED%8A%B8%EB%9D%BC%ED%8B%B0%EC%8A%A4-qt%EC%9B%94%EB%A0%9B-%EB%B9%8C%EB%93%9C%ED%95%98%EA%B8%B0/">
+                <h3 class="media-heading">Raspberrypi stretch with desktop에서 스트라티스 qt월렛 빌드하기</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Guide대로 Jessie에서 하면 편합니다만 Stretch에서 하시길 원하신다면</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2017/12/airflow-6.-multi-cluster%EC%97%90%EC%84%9C-airflow-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0/">
+                <h3 class="media-heading">[airflow] 6. Multi cluster에서 airflow 실행하기</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">요약  다루는 내용  분산 인스턴스에서 각각 airflow worker를 실행하고 task를 분산해서 실행하는법 task가 실행될 worker를 명시적으로 지정하는법  테스트 환경  두 개의 Amazon EC2 Instance 사용 1번 Instance에 아래와 같이 셋팅  metadata database(postsgres) rabbitmq airflow webserver airflow worker  2번 Instance에 아래와 같이 셋팅  airflow worker    airflow configuration  1번과 2번 instance에 airflow를 설치한다. dag폴더에 동일한 파일을 넣어준다. dag폴더를 Git repository로 세팅하고 Chef, Puppet, Ansible등으로 동기화 해주는 방법도 있다.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2017/12/airflow-5.-pyspark-sample-code-on-airflow/">
+                <h3 class="media-heading">[airflow] 5. Pyspark sample code on airflow</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Airflow에서 Pyspark task 실행하기</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2017/12/airflow-5.-pyspark-sample-code-on-airflow/">
+                <h3 class="media-heading">[airflow] 5. Pyspark sample code on airflow</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Airflow에서 Pyspark task 실행하기</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2017/12/mac-ijavascript-%EC%84%A4%EC%B9%98/">
+                <h3 class="media-heading">[Mac] ijavascript 설치</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"> ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot; brew install pkg-config node zeromq sudo easy_install pip sudo pip install --upgrade pyzmq jupyter sudo npm install -g ijavascript   설치하고자 하는 가상환경에서 ijsinstall ijsnotebook으로 실행 </div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2017/12/airflow-4.-celeryexecutor-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/">
+                <h3 class="media-heading">[airflow] 4. CeleryExecutor 사용하기</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Airflow CeleryExecutor 사용하기</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2017/12/airflow-3.-localexecutor-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/">
+                <h3 class="media-heading">[airflow] 3. LocalExecutor 사용하기</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Airflow LocalExecutor 사용하기</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2017/12/mac-apche-spark-%EC%84%A4%EC%B9%98/">
+                <h3 class="media-heading">[Mac] Apche Spark 설치</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Java 설치  이미 설치된 java의 경로를 찾고 싶다면 /usr/libexec/java_home 명령어를 이용하면 된다.
+ brew tap caskroom/versions brew cask search java # brew cask install java 이렇게하면 자바9가 설치됩니다. brew cask install java8   2017-12-05 현재 Spark는 Java9를 지원하지 않는다. 그러므로 java8을 설치해야한다. 아래처럼 본인의 version에 맞는 path를 .bashrc(또는 .zshrc)에 지정해준다. export JAVA_HOME=&quot;/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home&quot;  Scala 설치 brew install scala   java와 마찬가지로 본인의 version에 맞는 path를 .bashrc(또는 .</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         51 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://themes.gohugo.io/theme/hugo-tranquilpeak-theme/images/cover.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://sanghunka.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/sanghunka.github.io\/2017\/05\/github.io-%EB%B8%94%EB%A1%9C%EA%B7%B8%EB%A5%BC-%EB%A7%8C%EB%93%A4%EC%96%B4-%EB%B3%B4%EC%9E%90\/';
+          
+            this.page.identifier = '\/2017\/05\/github.io-%EB%B8%94%EB%A1%9C%EA%B7%B8%EB%A5%BC-%EB%A7%8C%EB%93%A4%EC%96%B4-%EB%B3%B4%EC%9E%90\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'sanghunka';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

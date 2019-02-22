@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nbviewer on Keep Moving</title>
+    <link>https://sanghunka.github.io/tags/nbviewer/</link>
+    <description>Recent content in Nbviewer on Keep Moving</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 02 Dec 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://sanghunka.github.io/tags/nbviewer/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[python]nbviewer 실행시키기</title>
+      <link>https://sanghunka.github.io/2017/12/pythonnbviewer-%EC%8B%A4%ED%96%89%EC%8B%9C%ED%82%A4%EA%B8%B0/</link>
+      <pubDate>Sat, 02 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://sanghunka.github.io/2017/12/pythonnbviewer-%EC%8B%A4%ED%96%89%EC%8B%9C%ED%82%A4%EA%B8%B0/</guid>
+      <description>&lt;p&gt;&lt;code&gt;cat iris.txt | python test.py&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

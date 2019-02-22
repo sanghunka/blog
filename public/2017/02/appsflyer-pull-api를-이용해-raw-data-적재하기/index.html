@@ -1,0 +1,1857 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.3-BETA">
+    <title>appsflyer pull api를 이용해 raw data 적재하기</title>
+    <meta name="author" content="Sanghun Kang">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="https://sanghunka.github.io/favicon-btc.png">
+    
+
+    
+    <meta name="description" content="참조: appsflyer pull api 가이드
+ push api가 아닌 pull api를 사용하는 이유.
+ 앱스플라이어 이벤트를 많이 정의할수록 push api가 빈번하게 호출된다. 이는 서비스 품질 저하로 이어질 수 있음. (완벽한 분석용 DB가 따로 구축되어 있다면 상관 없다.) 그러므로 실시간 데이터 적재보다는 하루에 한번, 전일자 데이터를 적재하기로 결정했고 이런 용도에는 pull api가 적합하다.  product와 archive에 동시에 적재하는 이유.
+ 앱스플라이어에서 데이터를 무한정 제공하진 않는다. 가입한 플랜에 따라 최근 x일자 데이터만 조회가 가능하다.">
+    <meta property="og:description" content="참조: appsflyer pull api 가이드
+ push api가 아닌 pull api를 사용하는 이유.
+ 앱스플라이어 이벤트를 많이 정의할수록 push api가 빈번하게 호출된다. 이는 서비스 품질 저하로 이어질 수 있음. (완벽한 분석용 DB가 따로 구축되어 있다면 상관 없다.) 그러므로 실시간 데이터 적재보다는 하루에 한번, 전일자 데이터를 적재하기로 결정했고 이런 용도에는 pull api가 적합하다.  product와 archive에 동시에 적재하는 이유.
+ 앱스플라이어에서 데이터를 무한정 제공하진 않는다. 가입한 플랜에 따라 최근 x일자 데이터만 조회가 가능하다.">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="appsflyer pull api를 이용해 raw data 적재하기">
+    <meta property="og:url" content="/2017/02/appsflyer-pull-api%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4-raw-data-%EC%A0%81%EC%9E%AC%ED%95%98%EA%B8%B0/">
+    <meta property="og:site_name" content="Keep Moving">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Keep Moving">
+    <meta name="twitter:description" content="참조: appsflyer pull api 가이드
+ push api가 아닌 pull api를 사용하는 이유.
+ 앱스플라이어 이벤트를 많이 정의할수록 push api가 빈번하게 호출된다. 이는 서비스 품질 저하로 이어질 수 있음. (완벽한 분석용 DB가 따로 구축되어 있다면 상관 없다.) 그러므로 실시간 데이터 적재보다는 하루에 한번, 전일자 데이터를 적재하기로 결정했고 이런 용도에는 pull api가 적합하다.  product와 archive에 동시에 적재하는 이유.
+ 앱스플라이어에서 데이터를 무한정 제공하진 않는다. 가입한 플랜에 따라 최근 x일자 데이터만 조회가 가능하다.">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/286acbc504a86d12987dfa5cd3782a41?s=640">
+    
+
+    
+      <meta property="og:image" content="//pbs.twimg.com/profile_images/559739646804885504/7KnZfyyo.png">
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://sanghunka.github.io/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://sanghunka.github.io/">Keep Moving</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://sanghunka.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="//www.gravatar.com/avatar/286acbc504a86d12987dfa5cd3782a41?s=90" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://sanghunka.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/286acbc504a86d12987dfa5cd3782a41?s=110" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Sanghun Kang</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>COOL</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sanghunka.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sanghunka.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sanghunka.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sanghunka.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sanghunka.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/sanghunka" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sanghunka.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      appsflyer pull api를 이용해 raw data 적재하기
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2017-02-09T00:00:00Z">
+        
+  February 9, 2017
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://sanghunka.github.io/categories/dev">dev</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#1-api-정리">1. API 정리</a></li>
+<li><a href="#2-테이블-설계">2. 테이블 설계</a></li>
+<li><a href="#3-테이블-생성">3. 테이블 생성</a></li>
+<li><a href="#4-안드로이드-ios-dataframe-합치기">4. 안드로이드&amp;ios dataframe 합치기</a></li>
+<li><a href="#5-temp테이블로-to-sql">5. temp테이블로 to_sql</a></li>
+<li><a href="#6-temp테이블-적재테이블로-insert">6. temp테이블 -&gt; 적재테이블로 insert</a></li>
+<li><a href="#전체-스크립트">전체 스크립트</a></li>
+</ul></li>
+</ul>
+</nav>
+
+<ul>
+<li><p>참조: <a href="https://support.appsflyer.com/hc/en-us/articles/207034346-Pull-APIs-Pulling-AppsFlyer-Reports-by-APIs">appsflyer pull api 가이드</a></p></li>
+
+<li><p>push api가 아닌 pull api를 사용하는 이유.</p>
+
+<ul>
+<li>앱스플라이어 이벤트를 많이 정의할수록 push api가 빈번하게 호출된다.</li>
+<li>이는 서비스 품질 저하로 이어질 수 있음. (완벽한 분석용 DB가 따로 구축되어 있다면 상관 없다.)</li>
+<li><strong>그러므로 실시간 데이터 적재보다는 하루에 한번, 전일자 데이터를 적재하기로 결정했고 이런 용도에는 pull api가 적합하다.</strong></li>
+</ul></li>
+
+<li><p>product와 archive에 동시에 적재하는 이유.</p>
+
+<ul>
+<li>앱스플라이어에서 데이터를 무한정 제공하진 않는다.</li>
+<li>가입한 플랜에 따라 최근 x일자 데이터만 조회가 가능하다.</li>
+<li>그렇기에 미리미리 자체적으로 데이터를 보관해야 한다.</li>
+<li>이를 위해 앱스플라이어에서 직접 AWS s3로 데이터를 알아서 쌓아주는 <a href="https://support.appsflyer.com/hc/en-us/articles/218125823-AppsFlyer-Data-Locker">data locker</a>라는 서비스를 제공하지만 매우 비싸다.</li>
+<li>내부 db와의 join을 위해 product에 적재해야 하지만 계속 쌓아두기엔 용량의 압박이 있다.</li>
+<li><strong>그러므로 동일한 데이터를 product와 archive에 동시에 쌓고 일정 시간이 지난 데이터는 product에서 삭제해서 용량 확보.</strong></li>
+</ul></li>
+
+<li><p>주의점</p>
+
+<ul>
+<li>api url에 timezone을 꼭 설정해주자.</li>
+<li>만약 한국시간대 기준으로 데이터를 적재하고 싶다면 <code>&amp;timezone=Asia/Seoul</code>을 추가해 준다. <a href="https://hq.appsflyer.com/export/{APP_ID}}/{REPORT_TYPE}/v5?api_token={API_TOKEN}&amp;from={FROM_DATE}&amp;to={TO_DATE}&amp;timezone=Asia/Seoul">https://hq.appsflyer.com/export/{APP_ID}}/{REPORT_TYPE}/v5?api_token={API_TOKEN}&amp;from={FROM_DATE}&amp;to={TO_DATE}&amp;timezone=Asia/Seoul</a></li>
+<li><a href="https://support.appsflyer.com/hc/en-us/articles/207034346-Pull-APIs-Pulling-AppsFlyer-Reports-by-APIs">가이드</a>대로라면 UTC+9를 의미하는 <code>&amp;timezone=%2B09:00</code>도 동일한 결과를 보여야 하지만 동일한 결과를 보여주지 않는다. appsflyer에 문의 결과 문제가 있는것 같으니 <code>&amp;timezone=Asia/Seoul</code>를 사용하라고 안내를 받았다.</li>
+<li>글로벌 서비스라면 currency도 정할 수 있다. 역시 <a href="https://support.appsflyer.com/hc/en-us/articles/207034346-Pull-APIs-Pulling-AppsFlyer-Reports-by-APIs">가이드</a>참조.</li>
+</ul></li>
+
+<li><p>문제점</p>
+
+<ul>
+<li><code>is_primary_attribution</code>의 경우, True/False로 들어올때도 있고 0/1로 들어올때도 있었다. 데이터의 통일성을 위해, 그리고 예외처리를 위해 <code>binary_to_boolean</code>함수를 만들어서 처리함.</li>
+<li>테스트를 위해 <code>event_value</code>에 최대한 많은 데이터를 담아 전송했으나 실제 이만큼 많은 데이터를 적재할 필요는 없다. 다른 column들과 많이 중복되기도 하고. 그래서 필요한 부분만 가져오고 나머지는 None으로 만들어버렸다.</li>
+</ul></li>
+</ul>
+
+<h2 id="1-api-정리">1. API 정리</h2>
+
+<ul>
+<li>Raw data reports의 installs report와 in-app-events를 한 테이블에 적재</li>
+<li>performance report - Partners by Date의 경우 이벤트 실행 횟수가 기록되어있는데 이벤트가 아직 확정되지 않아 보류</li>
+<li>안드로이드
+
+<ul>
+<li>인스톨: <a href="https://hq.appsflyer.com/export/{}/installs_report/v5?api_token={}&amp;from={from_date}&amp;to={to_date}&amp;timezone=Asia/Seoul">https://hq.appsflyer.com/export/{}/installs_report/v5?api_token={}&amp;from={from_date}&amp;to={to_date}&amp;timezone=Asia/Seoul</a></li>
+<li>인앱이벤트: <a href="https://hq.appsflyer.com/export/{}/in_app_events_report/v5?api_token={}&amp;from={from_date}&amp;to={to_date}&amp;timezone=Asia/Seoul">https://hq.appsflyer.com/export/{}/in_app_events_report/v5?api_token={}&amp;from={from_date}&amp;to={to_date}&amp;timezone=Asia/Seoul</a></li>
+<li>리타게팅 인앱이벤트: api 엑세스 지원 X (추후 지원 예정)</li>
+</ul></li>
+<li>ios
+
+<ul>
+<li>인스톨: <a href="https://hq.appsflyer.com/export/{}/installs_report/v5?api_token={}&amp;from={from_date}&amp;to={to_date}&amp;timezone=Asia/Seoul">https://hq.appsflyer.com/export/{}/installs_report/v5?api_token={}&amp;from={from_date}&amp;to={to_date}&amp;timezone=Asia/Seoul</a></li>
+<li>인앱이벤트: <a href="https://hq.appsflyer.com/export/{}/in_app_events_report/v5?api_token={}&amp;from={from_date}&amp;to={to_date}&amp;timezone=Asia/Seoul">https://hq.appsflyer.com/export/{}/in_app_events_report/v5?api_token={}&amp;from={from_date}&amp;to={to_date}&amp;timezone=Asia/Seoul</a></li>
+<li>리타게팅 인앱이벤트: api 엑세스 지원 X (추후 지원 예정)</li>
+</ul></li>
+</ul>
+
+<h2 id="2-테이블-설계">2. 테이블 설계</h2>
+
+<table>
+<thead>
+<tr>
+<th>api 제공 column</th>
+<th>필요?</th>
+<th>디비 column 명</th>
+<th>datatype</th>
+<th>비고</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Attributed Touch Type</td>
+<td>O</td>
+<td>attributed_touch_type</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Attributed Touch Time</td>
+<td>O</td>
+<td>attributed_touch_time</td>
+<td>timestamp</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Install Time</td>
+<td>O</td>
+<td>install_time</td>
+<td>timestamp</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Event Time</td>
+<td>O</td>
+<td>event_time</td>
+<td>timestamp</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Event Name</td>
+<td>O</td>
+<td>event_name</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Event Value</td>
+<td>O</td>
+<td>event_value</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Event Revenue</td>
+<td>X</td>
+<td>event_revenue</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Event Revenue Currency</td>
+<td>X</td>
+<td>event_revenue_currency</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Event Revenue USD</td>
+<td>X</td>
+<td>event_revenue_usd</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Event Source</td>
+<td>X</td>
+<td>event_source</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Is Receipt Validated</td>
+<td>X</td>
+<td>is_receipt_validated</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Partner</td>
+<td>O</td>
+<td>partner</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Media Source</td>
+<td>O</td>
+<td>media_source</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Channel</td>
+<td>O</td>
+<td>channel</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Keywords</td>
+<td>O</td>
+<td>keywords</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Campaign</td>
+<td>O</td>
+<td>campaign</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Campaign ID</td>
+<td>O</td>
+<td>campaign_id</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Adset</td>
+<td>O</td>
+<td>adset</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Adset ID</td>
+<td>O</td>
+<td>adset_id</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Ad</td>
+<td>O</td>
+<td>ad</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Ad ID</td>
+<td>O</td>
+<td>ad_id</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Ad Type</td>
+<td>O</td>
+<td>ad_type</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Site ID</td>
+<td>O</td>
+<td>site_id</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Sub Site ID</td>
+<td>X</td>
+<td>sub_site_id</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Sub Param 1</td>
+<td>X</td>
+<td>sub_param_1</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Sub Param 2</td>
+<td>X</td>
+<td>sub_param_2</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Sub Param 3</td>
+<td>X</td>
+<td>sub_param_3</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Sub Param 4</td>
+<td>X</td>
+<td>sub_param_4</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Sub Param 5</td>
+<td>X</td>
+<td>sub_param_5</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Cost Model</td>
+<td>X</td>
+<td>cost_model</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Cost Value</td>
+<td>X</td>
+<td>cost_value</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Cost Currency</td>
+<td>X</td>
+<td>cost_currency</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Contributor 1 Partner</td>
+<td>O</td>
+<td>contributor_1_partner</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Contributor 1 Media Source</td>
+<td>O</td>
+<td>contributor_1_media_source</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Contributor 1 Campaign</td>
+<td>O</td>
+<td>contributor_1_campaign</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Contributor 1 Touch Type</td>
+<td>O</td>
+<td>contributor_1_touch_type</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Contributor 1 Touch Time</td>
+<td>O</td>
+<td>contributor_1_touch_time</td>
+<td>timestamp</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Contributor 2 Partner</td>
+<td>O</td>
+<td>contributor_2_partner</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Contributor 2 Media Source</td>
+<td>O</td>
+<td>contributor_2_media_source</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Contributor 2 Campaign</td>
+<td>O</td>
+<td>contributor_2_campaign</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Contributor 2 Touch Type</td>
+<td>O</td>
+<td>contributor_2_touch_type</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Contributor 2 Touch Time</td>
+<td>O</td>
+<td>contributor_2_touch_time</td>
+<td>timestamp</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Contributor 3 Partner</td>
+<td>O</td>
+<td>contributor_3_partner</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Contributor 3 Media Source</td>
+<td>O</td>
+<td>contributor_3_media_source</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Contributor 3 Campaign</td>
+<td>O</td>
+<td>contributor_3_campaign</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Contributor 3 Touch Type</td>
+<td>O</td>
+<td>contributor_3_touch_type</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Contributor 3 Touch Time</td>
+<td>O</td>
+<td>contributor_3_touch_time</td>
+<td>timestamp</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Region</td>
+<td>X</td>
+<td>region</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Country Code</td>
+<td>X</td>
+<td>country_code</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>State</td>
+<td>X</td>
+<td>state</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>City</td>
+<td>X</td>
+<td>city</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Postal Code</td>
+<td>X</td>
+<td>postal_code</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>DMA</td>
+<td>X</td>
+<td>dma</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>IP</td>
+<td>X</td>
+<td>ip</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>WIFI</td>
+<td>O</td>
+<td>wifi</td>
+<td>boolean</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Operator</td>
+<td>X</td>
+<td>operator</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Carrier</td>
+<td>X</td>
+<td>carrier</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Language</td>
+<td>X</td>
+<td>language</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>AppsFlyer ID</td>
+<td>O</td>
+<td>appsflyer_id</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Advertising ID</td>
+<td>O</td>
+<td>advertising_id</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>IDFA</td>
+<td>X</td>
+<td>idfa</td>
+<td>text</td>
+<td>advertising_id에 같이 적재</td>
+</tr>
+
+<tr>
+<td>Android ID</td>
+<td>X</td>
+<td>android_id</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Customer User ID</td>
+<td>O</td>
+<td>customer_user_id</td>
+<td>integer</td>
+<td></td>
+</tr>
+
+<tr>
+<td>IMEI</td>
+<td>X</td>
+<td>imei</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>IDFV</td>
+<td>X</td>
+<td>idfv</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Platform</td>
+<td>O</td>
+<td>platform</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Device Type</td>
+<td>X</td>
+<td>device_type</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>OS Version</td>
+<td>X</td>
+<td>os_version</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>App Version</td>
+<td>X</td>
+<td>app_version</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>SDK Version</td>
+<td>X</td>
+<td>sdk_version</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>App ID</td>
+<td>X</td>
+<td>app_id</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>App Name</td>
+<td>X</td>
+<td>app_name</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Bundle ID</td>
+<td>X</td>
+<td>bundle_id</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Is Retargeting</td>
+<td>O</td>
+<td>is_retargeting</td>
+<td>boolean</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Retargeting Conversion Type</td>
+<td>O</td>
+<td>retargeting_conversion_type</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Attribution Lookback</td>
+<td>O</td>
+<td>attribution_lookback</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Reengagement Window</td>
+<td>O</td>
+<td>reengagement_window</td>
+<td>text</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Is Primary Attribution</td>
+<td>O</td>
+<td>is_primary_attribution</td>
+<td>boolean</td>
+<td></td>
+</tr>
+
+<tr>
+<td>User Agent</td>
+<td>X</td>
+<td>user_agent</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>HTTP Referrer</td>
+<td>X</td>
+<td>http_referrer</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Original URL</td>
+<td>X</td>
+<td>original_url</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="3-테이블-생성">3. 테이블 생성</h2>
+
+<pre><code class="language-sql">create table appsflyer_raw_data
+(
+    attributed_touch_type   text,
+    attributed_touch_time   timestamp,
+    install_time    timestamp,
+    event_time  timestamp,
+    event_name  text,
+    event_value text,
+    partner text,
+    media_source    text,
+    channel text,
+    keywords    text,
+    campaign    text,
+    campaign_id text,
+    adset   text,
+    adset_id    text,
+    ad  text,
+    ad_id   text,
+    ad_type text,
+    site_id text,
+    contributor_1_partner   text,
+    contributor_1_media_source  text,
+    contributor_1_campaign  text,
+    contributor_1_touch_type    text,
+    contributor_1_touch_time    timestamp,
+    contributor_2_partner   text,
+    contributor_2_media_source  text,
+    contributor_2_campaign  text,
+    contributor_2_touch_type    text,
+    contributor_2_touch_time    timestamp,
+    contributor_3_partner   text,
+    contributor_3_media_source  text,
+    contributor_3_campaign  text,
+    contributor_3_touch_type    text,
+    contributor_3_touch_time    timestamp,
+    wifi    boolean,
+    appsflyer_id    text,
+    advertising_id  text,
+    customer_user_id integer,  
+    platform    text,
+    is_retargeting  boolean,
+    retargeting_conversion_type text,
+    attribution_lookback    text,
+    reengagement_window text,
+    is_primary_attribution  boolean
+)
+</code></pre>
+
+<h2 id="4-안드로이드-ios-dataframe-합치기">4. 안드로이드&amp;ios dataframe 합치기</h2>
+
+<ul>
+<li>둘 다 동일한 format이라 문제 없음</li>
+</ul>
+
+<h2 id="5-temp테이블로-to-sql">5. temp테이블로 to_sql</h2>
+
+<ul>
+<li>temp_appsflyer_raw_data</li>
+</ul>
+
+<h2 id="6-temp테이블-적재테이블로-insert">6. temp테이블 -&gt; 적재테이블로 insert</h2>
+
+<h2 id="전체-스크립트">전체 스크립트</h2>
+
+<pre><code class="language-python">#-*-coding:utf-8
+import datetime
+import locale
+import datetime
+import time
+import os
+import pandas as pd
+import sqlalchemy
+import psycopg2
+import numpy as np
+import json
+# from slacker import Slacker
+
+# 작업이 완료되면 슬랙으로 noti를 주기위해 넣음. 다른 방식으로 작업 결과를 체크한다면 지워도 무방함.
+# SLACK_CHANNEL = 'YOUR_SLACK_CHANNEL'
+# SLACK_TOKEN = &quot;YOUR_SLACK_BOT_TOKEN&quot;
+
+def api_calling(api_call_command, download_path):
+    while True:
+        os.system(api_call_command)
+        # 용량이 0바이트인 csv가 다운로드 되었을 경우
+        if os.path.getsize(download_path) == 0:
+            #slack.chat.post_message(SLACK_CHANNEL, &quot;[failed]&quot; + download_path, as_user=True)
+            os.remove(download_path)
+            time.sleep(10*60)   # 10분 기다렸다가 다시 다운로드 시도해
+            continue
+        break
+
+def binary_to_boolean(input_str):
+    try:
+        if int(input_str) == 1:
+            return True
+        elif int(input_str) == 0:
+            return False
+        else:
+            return input_str
+    except:
+        return input_str
+
+def connect(user, password, db, host, port=DEFAULT_PORT):
+    '''Returns a connection and a metadata object'''
+    url = 'postgresql://{}:{}@{}:{}/{}'
+    url = url.format(user, password, host, port, db)
+
+    # The return value of create_engine() is our connection object
+    connection = sqlalchemy.create_engine(url, client_encoding='utf8')
+
+    return connection
+
+
+# product DB 연결 정보
+product_user = ''
+product_password = ''
+product_host=''
+product_port =
+product_db = ''
+
+# archive DB 연결 정보
+archive_user = ''
+archive_password = ''
+archive_host=''
+archive_port =
+archive_db = ''
+
+
+# 어제자 데이터를 가져와 적재하기 위해 어제 날자를 구함
+today = datetime.datetime.now().date()
+yesterday = today - datetime.timedelta(1)
+
+# 어제 데이터만 조회하기 위함
+from_date=to_date=yesterday
+
+
+product_connection_string = &quot;dbname={dbname} user={user} host={host} password={password} port={port}&quot;\
+                            .format(dbname=product_db,
+                                    user=product_user,
+                                    host=product_host,
+                                    password=product_password,
+                                    port=product_port)
+
+archive_connection_string = &quot;dbname={dbname} user={user} host={host} password={password} port={port}&quot;\
+                            .format(dbname=archive_db,
+                                    user=archive_user,
+                                    host=archive_host,
+                                    password=archive_password,
+                                    port=archive_port)
+
+
+# 다운로드 경로&amp; api url 지정
+download_path_report = &quot;WRITE_YOUR_PATH/{date}_{platform}_{type}_report.csv&quot;
+
+download_path_android_install_report = download_path_report.format(date=yesterday, platform='android', type='install')
+download_path_android_in_app_events_report = download_path_report.format(date=yesterday, platform='android', type='in_app_events')
+
+download_path_ios_install_report = download_path_report.format(date=yesterday, platform='ios', type='install')
+download_path_ios_in_app_events_report = download_path_report.format(date=yesterday, platform='ios', type='in_app_events')
+
+api_url_android_install_report = &quot;https://PULL_API_URL_AND_API_KEY&amp;from={from_date}&amp;to={to_date}&amp;timezone=Asia/Seoul&quot;
+api_url_android_in_app_events_report = &quot;https://PULL_API_URL_AND_API_KEY&amp;from={from_date}&amp;to={to_date}&amp;timezone=Asia/Seoul&quot;
+
+api_url_ios_install_report = &quot;https://PULL_API_URL_AND_API_KEY&amp;from={from_date}&amp;to={to_date}&amp;timezone=Asia/Seoul&quot;
+api_url_ios_in_app_events_report = &quot;https://PULL_API_URL_AND_API_KEY&amp;from={from_date}&amp;to={to_date}&amp;timezone=Asia/Seoul&quot;
+
+api_url_android_install_report = api_url_android_install_report.format(from_date=from_date
+                                                                 , to_date=to_date)
+api_url_android_in_app_events_report = api_url_android_in_app_events_report.format(from_date=from_date
+                                                                                     , to_date=to_date)
+api_url_ios_install_report = api_url_ios_install_report.format(from_date=from_date
+                                                                 , to_date=to_date)
+api_url_ios_in_app_events_report = api_url_ios_in_app_events_report.format(from_date=from_date
+                                                                            , to_date=to_date)
+
+
+api_call=&quot;wget -O '{download_path}' '{api_url}'&quot;
+api_call_android_install_report = api_call.format(download_path=download_path_android_install_report
+                                               , api_url = api_url_android_install_report)
+api_call_android_in_app_events_report = api_call.format(download_path=download_path_android_in_app_events_report
+                                               , api_url = api_url_android_in_app_events_report)
+api_call_ios_install_report = api_call.format(download_path=download_path_ios_install_report
+                                               , api_url = api_url_ios_install_report)
+api_call_ios_in_app_events_report = api_call.format(download_path=download_path_ios_in_app_events_report
+                                               , api_url = api_url_ios_in_app_events_report)
+
+
+# raw data report download
+api_calling(api_call_android_install_report, download_path_android_install_report)
+api_calling(api_call_ios_install_report, download_path_ios_install_report)
+api_calling(api_call_android_in_app_events_report, download_path_android_in_app_events_report)
+api_calling(api_call_ios_in_app_events_report, download_path_ios_in_app_events_report)
+
+
+android_install_report = pd.read_csv(download_path_android_install_report)
+android_in_app_events_report = pd.read_csv(download_path_android_in_app_events_report)
+ios_install_report = pd.read_csv(download_path_ios_install_report)
+ios_in_app_events_report = pd.read_csv(download_path_ios_in_app_events_report)
+
+total_report = pd.concat([  android_install_report
+                          , android_in_app_events_report
+                          , ios_install_report
+                          , ios_in_app_events_report], axis = 0)
+
+# column명을 정제. 대문자를 소문자로, 공백문자를 underscore로
+total_report.columns = [column.lower().replace(' ', '_') for column in total_report.columns]
+
+
+# ios의 경우 idfa컬럼값을 advertising_id로 복사
+total_report.loc[total_report.platform == 'ios', 'advertising_id'] = total_report.loc[total_report.platform == 'ios', 'idfa']
+
+#db에 적재할 column만 가져오기
+necessary_columns = [
+    'attributed_touch_type', 'attributed_touch_time', 'install_time', 'event_time', 'event_name', 'event_value',
+    'partner', 'media_source', 'channel', 'keywords', 'campaign', 'campaign_id', 'adset', 'adset_id', 'ad','ad_id', 'ad_type', 'site_id',
+    'contributor_1_partner', 'contributor_1_media_source', 'contributor_1_campaign', 'contributor_1_touch_type', 'contributor_1_touch_time',
+    'contributor_2_partner', 'contributor_2_media_source', 'contributor_2_campaign', 'contributor_2_touch_type', 'contributor_2_touch_time',
+    'contributor_3_partner', 'contributor_3_media_source', 'contributor_3_campaign', 'contributor_3_touch_type', 'contributor_3_touch_time',
+    'wifi', 'appsflyer_id', 'advertising_id', 'customer_user_id', 'platform', 'is_retargeting', 'retargeting_conversion_type', 'attribution_lookback', 'reengagement_window', 'is_primary_attribution']
+
+sliced_report = total_report[necessary_columns]
+
+#구매 이벤트일 경우에만 영수증 아이디를 남기고 나머지 경우에는 모두 삭제
+sliced_report['event_value'] = sliced_report['event_value'].apply(lambda x: int(json.loads(x)['af_receipt_id'])
+                                                                       if 'af_receipt_id' in str(x)
+                                                                       else None)
+
+# is_primary_attribution의 경우 True/False로 들어올때도 있고 0/1로 들어올 떄도 있다.
+# Boolean으로 처리해주기 위해 데이터를 전처리해주자
+sliced_report['is_primary_attribution'] = sliced_report['is_primary_attribution'].apply(lambda x: binary_to_boolean(x))
+
+# 기존에 적재하는 테이블에 어제자 데이터를 insert하는 형식으로 하기보단 아래 순서대로 작업을 진행.
+# 1. 다운받은 csv를 temp 테이블로 옮긴 뒤,
+# 2. temp테이블의 모든 레코드를 기존 적재 테이블로 옮기고
+# 3. temp테이블 drop
+# 4. 다운받은 csv파일 삭제
+
+#connect production DB with sqlalchemy
+product = connect(product_user, product_password, product_db, product_host, product_port)
+
+
+# 1. 다운받은 csv를 temp 테이블로 옮긴 뒤,
+sliced_report.to_sql('temp_appsflyer_raw_data', product, index=False,
+                    dtype={
+                           'attributed_touch_type':sqlalchemy.types.Text(),
+                           'attributed_touch_time':sqlalchemy.types.TIMESTAMP(),
+                           'install_time':sqlalchemy.types.TIMESTAMP(),
+                           'event_time':sqlalchemy.types.TIMESTAMP(),
+                           'event_name':sqlalchemy.types.Text(),
+                           'event_value':sqlalchemy.types.Text(),
+                           'partner':sqlalchemy.types.Text(),
+                           'media_source':sqlalchemy.types.Text(),
+                           'channel':sqlalchemy.types.Text(),
+                           'keywords':sqlalchemy.types.Text(),
+                           'campaign':sqlalchemy.types.Text(),
+                           'campaign_id':sqlalchemy.types.Text(),
+                           'adset':sqlalchemy.types.Text(),
+                           'adset_id':sqlalchemy.types.Text(),
+                           'ad':sqlalchemy.types.Text(),
+                           'ad_id':sqlalchemy.types.Text(),
+                           'ad_type':sqlalchemy.types.Text(),
+                           'site_id':sqlalchemy.types.Text(),
+                           'contributor_1_partner':sqlalchemy.types.Text(),
+                           'contributor_1_media_source':sqlalchemy.types.Text(),
+                           'contributor_1_campaign':sqlalchemy.types.Text(),
+                           'contributor_1_touch_type':sqlalchemy.types.Text(),
+                           'contributor_1_touch_time':sqlalchemy.types.TIMESTAMP(),
+                           'contributor_2_partner':sqlalchemy.types.Text(),
+                           'contributor_2_media_source':sqlalchemy.types.Text(),
+                           'contributor_2_campaign':sqlalchemy.types.Text(),
+                           'contributor_2_touch_type':sqlalchemy.types.Text(),
+                           'contributor_2_touch_time':sqlalchemy.types.TIMESTAMP(),
+                           'contributor_3_partner':sqlalchemy.types.Text(),
+                           'contributor_3_media_source':sqlalchemy.types.Text(),
+                           'contributor_3_campaign':sqlalchemy.types.Text(),
+                           'contributor_3_touch_type':sqlalchemy.types.Text(),
+                           'contributor_3_touch_time':sqlalchemy.types.TIMESTAMP(),
+                           'wifi':sqlalchemy.types.Boolean(),
+                           'appsflyer_id':sqlalchemy.types.Text(),
+                           'advertising_id':sqlalchemy.types.Text(),
+                           'customer_user_id':sqlalchemy.types.Integer(),
+                           'platform':sqlalchemy.types.Text(),
+                           'is_retargeting':sqlalchemy.types.Boolean(),
+                           'retargeting_conversion_type':sqlalchemy.types.Text(),
+                           'attribution_lookback':sqlalchemy.types.Text(),
+                           'reengagement_window':sqlalchemy.types.Text(),
+                           'is_primary_attribution':sqlalchemy.types.Boolean()
+                          }
+                  )
+
+# connect production DB wiht psycopg2
+product_psycopg = psycopg2.connect(product_connection_string)
+pc = product_psycopg.cursor()
+
+# 2. temp테이블의 모든 레코드를 기존 적재 테이블로 옮기고
+# 3. temp테이블 drop
+sql_insert = &quot;&quot;&quot;
+insert into appsflyer_raw_data
+select *
+from temp_appsflyer_raw_data
+&quot;&quot;&quot;
+sql_drop = &quot;&quot;&quot;drop table temp_appsflyer_raw_data&quot;&quot;&quot;
+
+pc.execute(sql_insert)
+pc.execute('commit')
+pc.execute(sql_drop)
+pc.execute('commit')
+pc.close()
+
+# 동일한 작업을 archive DB에서도 반복
+#connect archive DB with sqlalchemy
+archive = connect(archive_user, archive_password, archive_db, archive_host, archive_port)
+
+#temp 테이블로 넣기
+sliced_report.to_sql('temp_appsflyer_raw_data', archive, index=False,
+                    dtype={
+                           'attributed_touch_type':sqlalchemy.types.Text(),
+                           'attributed_touch_time':sqlalchemy.types.TIMESTAMP(),
+                           'install_time':sqlalchemy.types.TIMESTAMP(),
+                           'event_time':sqlalchemy.types.TIMESTAMP(),
+                           'event_name':sqlalchemy.types.Text(),
+                           'event_value':sqlalchemy.types.Text(),
+                           'partner':sqlalchemy.types.Text(),
+                           'media_source':sqlalchemy.types.Text(),
+                           'channel':sqlalchemy.types.Text(),
+                           'keywords':sqlalchemy.types.Text(),
+                           'campaign':sqlalchemy.types.Text(),
+                           'campaign_id':sqlalchemy.types.Text(),
+                           'adset':sqlalchemy.types.Text(),
+                           'adset_id':sqlalchemy.types.Text(),
+                           'ad':sqlalchemy.types.Text(),
+                           'ad_id':sqlalchemy.types.Text(),
+                           'ad_type':sqlalchemy.types.Text(),
+                           'site_id':sqlalchemy.types.Text(),
+                           'contributor_1_partner':sqlalchemy.types.Text(),
+                           'contributor_1_media_source':sqlalchemy.types.Text(),
+                           'contributor_1_campaign':sqlalchemy.types.Text(),
+                           'contributor_1_touch_type':sqlalchemy.types.Text(),
+                           'contributor_1_touch_time':sqlalchemy.types.TIMESTAMP(),
+                           'contributor_2_partner':sqlalchemy.types.Text(),
+                           'contributor_2_media_source':sqlalchemy.types.Text(),
+                           'contributor_2_campaign':sqlalchemy.types.Text(),
+                           'contributor_2_touch_type':sqlalchemy.types.Text(),
+                           'contributor_2_touch_time':sqlalchemy.types.TIMESTAMP(),
+                           'contributor_3_partner':sqlalchemy.types.Text(),
+                           'contributor_3_media_source':sqlalchemy.types.Text(),
+                           'contributor_3_campaign':sqlalchemy.types.Text(),
+                           'contributor_3_touch_type':sqlalchemy.types.Text(),
+                           'contributor_3_touch_time':sqlalchemy.types.TIMESTAMP(),
+                           'wifi':sqlalchemy.types.Boolean(),
+                           'appsflyer_id':sqlalchemy.types.Text(),
+                           'advertising_id':sqlalchemy.types.Text(),
+                           'customer_user_id':sqlalchemy.types.Integer(),
+                           'platform':sqlalchemy.types.Text(),
+                           'is_retargeting':sqlalchemy.types.Boolean(),
+                           'retargeting_conversion_type':sqlalchemy.types.Text(),
+                           'attribution_lookback':sqlalchemy.types.Text(),
+                           'reengagement_window':sqlalchemy.types.Text(),
+                           'is_primary_attribution':sqlalchemy.types.Boolean()
+                          }
+                  )
+
+# connect archive DB wiht psycopg2
+archive_psycopg = psycopg2.connect(archive_connection_string)
+ac = archive_psycopg.cursor()
+
+ac.execute(sql_insert)
+ac.execute('commit')
+ac.execute(sql_drop)
+ac.execute('commit')
+ac.close()
+
+
+# 4. 다운받은 csv파일 삭제
+os.remove(download_path_android_install_report)
+os.remove(download_path_android_in_app_events_report)
+os.remove(download_path_ios_install_report)
+os.remove(download_path_ios_in_app_events_report)
+
+# 작업이 완료되면 슬랙으로 noti
+# slack = Slacker(SLACK_TOKEN)
+# slack.chat.post_message(SLACK_CHANNEL, &quot;appsflyer_raw_data.py done&quot;, as_user=True)
+</code></pre>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://sanghunka.github.io/tags/appsflyer/">appsflyer</a>
+
+  <a class="tag tag--primary tag--small" href="https://sanghunka.github.io/tags/postgresql/">postgresql</a>
+
+  <a class="tag tag--primary tag--small" href="https://sanghunka.github.io/tags/data-loading/">data loading</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://sanghunka.github.io/2017/02/appsflyer-pull-api%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4-daily-report-%EC%A0%81%EC%9E%AC%ED%95%98%EA%B8%B0/" data-tooltip="appsflyer pull api를 이용해 daily report 적재하기">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://sanghunka.github.io/2017/01/apache-zeppelin%EC%97%90-postgres-db-%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0/" data-tooltip="apache zeppelin에 postgres DB 연결하기">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanghunka.github.io/2017/02/appsflyer-pull-api%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4-raw-data-%EC%A0%81%EC%9E%AC%ED%95%98%EA%B8%B0/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sanghunka.github.io/2017/02/appsflyer-pull-api%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4-raw-data-%EC%A0%81%EC%9E%AC%ED%95%98%EA%B8%B0/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sanghunka.github.io/2017/02/appsflyer-pull-api%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4-raw-data-%EC%A0%81%EC%9E%AC%ED%95%98%EA%B8%B0/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 <a href="https://github.com/sanghunka">sanghunka</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://sanghunka.github.io/2017/02/appsflyer-pull-api%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4-daily-report-%EC%A0%81%EC%9E%AC%ED%95%98%EA%B8%B0/" data-tooltip="appsflyer pull api를 이용해 daily report 적재하기">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://sanghunka.github.io/2017/01/apache-zeppelin%EC%97%90-postgres-db-%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0/" data-tooltip="apache zeppelin에 postgres DB 연결하기">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanghunka.github.io/2017/02/appsflyer-pull-api%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4-raw-data-%EC%A0%81%EC%9E%AC%ED%95%98%EA%B8%B0/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sanghunka.github.io/2017/02/appsflyer-pull-api%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4-raw-data-%EC%A0%81%EC%9E%AC%ED%95%98%EA%B8%B0/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sanghunka.github.io/2017/02/appsflyer-pull-api%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4-raw-data-%EC%A0%81%EC%9E%AC%ED%95%98%EA%B8%B0/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsanghunka.github.io%2F2017%2F02%2Fappsflyer-pull-api%25EB%25A5%25BC-%25EC%259D%25B4%25EC%259A%25A9%25ED%2595%25B4-raw-data-%25EC%25A0%2581%25EC%259E%25AC%25ED%2595%2598%25EA%25B8%25B0%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fsanghunka.github.io%2F2017%2F02%2Fappsflyer-pull-api%25EB%25A5%25BC-%25EC%259D%25B4%25EC%259A%25A9%25ED%2595%25B4-raw-data-%25EC%25A0%2581%25EC%259E%25AC%25ED%2595%2598%25EA%25B8%25B0%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fsanghunka.github.io%2F2017%2F02%2Fappsflyer-pull-api%25EB%25A5%25BC-%25EC%259D%25B4%25EC%259A%25A9%25ED%2595%25B4-raw-data-%25EC%25A0%2581%25EC%259E%25AC%25ED%2595%2598%25EA%25B8%25B0%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/286acbc504a86d12987dfa5cd3782a41?s=110" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Sanghun Kang</h4>
+    
+      <div id="about-card-bio"><strong>COOL</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Data Engineer&amp;Analyst
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        South Korea
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2018/01/zsh%EC%97%90-%EC%84%A4%EC%A0%95%ED%95%B4%EB%91%94-alias%EB%A5%BC-crontab%EC%97%90-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B3%A0-%EC%8B%B6%EC%9D%84%EB%95%8C/">
+                <h3 class="media-heading">zsh에 설정해둔 alias를 crontab에 사용하고 싶을때</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Put your functions in .zshenv.
+.zshenv is sourced on all invocations of the shell, unless the -f option is set. It should contain commands to set the command search path, plus other important environment variables. .zshenv should not contain commands that produce output or assume the shell is attached to a tty.
+.zshrc is sourced in interactive shells. It should contain commands to set up aliases, functions, options, key bindings, etc.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2018/01/%EC%95%A0%EB%93%9C%EC%9B%8C%EC%A6%88-%ED%95%99%EC%8A%B5/">
+                <h3 class="media-heading">애드워즈 학습</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">강의 1: 온라인 광고의 가치에 대한 이해 이 모듈에서 학습할 내용
+ 온라인 광고 및 애드워즈의 장점 Google의 광고 네트워크 애드워즈의 작동 원리  1.1 온라인 광고 및 애드워즈의 장점  광고 타겟팅  키워드 광고 위치 연령,위치,언어 요일,시간대,게재빈도 기기  비용관리  월, 일, 또는 광고 단위로 지출 비용 설정 가능  광고 효과 측정 캠페인 관리  MCC, 애드워즈 에디터등   애드워즈 광고
+1.2 Google의 광고 네트워크  검색 네트워크</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2017/12/raspberrypi-stretch-with-desktop%EC%97%90%EC%84%9C-%EC%8A%A4%ED%8A%B8%EB%9D%BC%ED%8B%B0%EC%8A%A4-qt%EC%9B%94%EB%A0%9B-%EB%B9%8C%EB%93%9C%ED%95%98%EA%B8%B0/">
+                <h3 class="media-heading">Raspberrypi stretch with desktop에서 스트라티스 qt월렛 빌드하기</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Guide대로 Jessie에서 하면 편합니다만 Stretch에서 하시길 원하신다면</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2017/12/airflow-6.-multi-cluster%EC%97%90%EC%84%9C-airflow-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0/">
+                <h3 class="media-heading">[airflow] 6. Multi cluster에서 airflow 실행하기</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">요약  다루는 내용  분산 인스턴스에서 각각 airflow worker를 실행하고 task를 분산해서 실행하는법 task가 실행될 worker를 명시적으로 지정하는법  테스트 환경  두 개의 Amazon EC2 Instance 사용 1번 Instance에 아래와 같이 셋팅  metadata database(postsgres) rabbitmq airflow webserver airflow worker  2번 Instance에 아래와 같이 셋팅  airflow worker    airflow configuration  1번과 2번 instance에 airflow를 설치한다. dag폴더에 동일한 파일을 넣어준다. dag폴더를 Git repository로 세팅하고 Chef, Puppet, Ansible등으로 동기화 해주는 방법도 있다.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2017/12/airflow-5.-pyspark-sample-code-on-airflow/">
+                <h3 class="media-heading">[airflow] 5. Pyspark sample code on airflow</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Airflow에서 Pyspark task 실행하기</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2017/12/airflow-5.-pyspark-sample-code-on-airflow/">
+                <h3 class="media-heading">[airflow] 5. Pyspark sample code on airflow</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Airflow에서 Pyspark task 실행하기</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2017/12/mac-ijavascript-%EC%84%A4%EC%B9%98/">
+                <h3 class="media-heading">[Mac] ijavascript 설치</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"> ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot; brew install pkg-config node zeromq sudo easy_install pip sudo pip install --upgrade pyzmq jupyter sudo npm install -g ijavascript   설치하고자 하는 가상환경에서 ijsinstall ijsnotebook으로 실행 </div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2017/12/airflow-4.-celeryexecutor-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/">
+                <h3 class="media-heading">[airflow] 4. CeleryExecutor 사용하기</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Airflow CeleryExecutor 사용하기</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2017/12/airflow-3.-localexecutor-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/">
+                <h3 class="media-heading">[airflow] 3. LocalExecutor 사용하기</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Airflow LocalExecutor 사용하기</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2017/12/mac-apche-spark-%EC%84%A4%EC%B9%98/">
+                <h3 class="media-heading">[Mac] Apche Spark 설치</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Java 설치  이미 설치된 java의 경로를 찾고 싶다면 /usr/libexec/java_home 명령어를 이용하면 된다.
+ brew tap caskroom/versions brew cask search java # brew cask install java 이렇게하면 자바9가 설치됩니다. brew cask install java8   2017-12-05 현재 Spark는 Java9를 지원하지 않는다. 그러므로 java8을 설치해야한다. 아래처럼 본인의 version에 맞는 path를 .bashrc(또는 .zshrc)에 지정해준다. export JAVA_HOME=&quot;/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home&quot;  Scala 설치 brew install scala   java와 마찬가지로 본인의 version에 맞는 path를 .bashrc(또는 .</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         51 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://themes.gohugo.io/theme/hugo-tranquilpeak-theme/images/cover.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://sanghunka.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/sanghunka.github.io\/2017\/02\/appsflyer-pull-api%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4-raw-data-%EC%A0%81%EC%9E%AC%ED%95%98%EA%B8%B0\/';
+          
+            this.page.identifier = '\/2017\/02\/appsflyer-pull-api%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4-raw-data-%EC%A0%81%EC%9E%AC%ED%95%98%EA%B8%B0\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'sanghunka';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

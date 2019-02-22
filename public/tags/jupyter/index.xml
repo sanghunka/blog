@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jupyter on Keep Moving</title>
+    <link>https://sanghunka.github.io/tags/jupyter/</link>
+    <description>Recent content in Jupyter on Keep Moving</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 20 Dec 2017 12:00:00 +0900</lastBuildDate>
+    
+	<atom:link href="https://sanghunka.github.io/tags/jupyter/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[Mac] ijavascript 설치</title>
+      <link>https://sanghunka.github.io/2017/12/mac-ijavascript-%EC%84%A4%EC%B9%98/</link>
+      <pubDate>Wed, 20 Dec 2017 12:00:00 +0900</pubDate>
+      
+      <guid>https://sanghunka.github.io/2017/12/mac-ijavascript-%EC%84%A4%EC%B9%98/</guid>
+      <description> ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot; brew install pkg-config node zeromq sudo easy_install pip sudo pip install --upgrade pyzmq jupyter sudo npm install -g ijavascript   설치하고자 하는 가상환경에서 ijsinstall ijsnotebook으로 실행 </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zsh on Keep Moving</title>
+    <link>https://sanghunka.github.io/tags/zsh/</link>
+    <description>Recent content in Zsh on Keep Moving</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 22 Jan 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://sanghunka.github.io/tags/zsh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>zsh에 설정해둔 alias를 crontab에 사용하고 싶을때</title>
+      <link>https://sanghunka.github.io/2018/01/zsh%EC%97%90-%EC%84%A4%EC%A0%95%ED%95%B4%EB%91%94-alias%EB%A5%BC-crontab%EC%97%90-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B3%A0-%EC%8B%B6%EC%9D%84%EB%95%8C/</link>
+      <pubDate>Mon, 22 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://sanghunka.github.io/2018/01/zsh%EC%97%90-%EC%84%A4%EC%A0%95%ED%95%B4%EB%91%94-alias%EB%A5%BC-crontab%EC%97%90-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B3%A0-%EC%8B%B6%EC%9D%84%EB%95%8C/</guid>
+      <description>Put your functions in .zshenv.
+.zshenv is sourced on all invocations of the shell, unless the -f option is set. It should contain commands to set the command search path, plus other important environment variables. .zshenv should not contain commands that produce output or assume the shell is attached to a tty.
+.zshrc is sourced in interactive shells. It should contain commands to set up aliases, functions, options, key bindings, etc.</description>
+    </item>
+    
+  </channel>
+</rss>

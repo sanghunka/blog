@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tutorial on Keep Moving</title>
+    <link>https://sanghunka.github.io/tags/tutorial/</link>
+    <description>Recent content in Tutorial on Keep Moving</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 02 Dec 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://sanghunka.github.io/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MaxOS Hadoop 설치</title>
+      <link>https://sanghunka.github.io/2017/12/maxos-hadoop-%EC%84%A4%EC%B9%98/</link>
+      <pubDate>Sat, 02 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://sanghunka.github.io/2017/12/maxos-hadoop-%EC%84%A4%EC%B9%98/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;2.7.3기준으로 작성되어있음.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>MaxOS Hive 설치</title>
+      <link>https://sanghunka.github.io/2017/12/maxos-hive-%EC%84%A4%EC%B9%98/</link>
+      <pubDate>Sat, 02 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://sanghunka.github.io/2017/12/maxos-hive-%EC%84%A4%EC%B9%98/</guid>
+      <description>참조  https://cwiki.apache.org/confluence/display/Hive/GettingStarted https://noobergeek.wordpress.com/2013/11/09/simplest-way-to-install-and-configure-hive-for-mac-osx-lion/  1. Install hive via brew. This will take some time brew install hive  2. Add hadoop and hive to your path by editing your bash_profile  zshell사용자라면 .bash_profile대신 .zshrc vi ~/.bash_profile 아래 내용 추가 bash export HADOOP_HOME=/usr/local/Cellar/hadoop/hadoop.version.no export HIVE_HOME=/usr/local/Cellar/hive/hive.version.no/libexec  source ~/.bash_profile  3. Download the mysql connector  버전은 최신버전으로 다운받으면 좋음. ``` $ curl -L &amp;lsquo;http://www.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.22.tar.gz/from/http://mysql.he.net/&#39; | tar xz  $ sudo cp mysql-connector-java-5.</description>
+    </item>
+    
+    <item>
+      <title>MaxOS Hue 설치</title>
+      <link>https://sanghunka.github.io/2017/12/maxos-hue-%EC%84%A4%EC%B9%98/</link>
+      <pubDate>Sat, 02 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://sanghunka.github.io/2017/12/maxos-hue-%EC%84%A4%EC%B9%98/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;메뉴얼이 잘 되어있습니다.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

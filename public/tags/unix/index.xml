@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Unix on Keep Moving</title>
+    <link>https://sanghunka.github.io/tags/unix/</link>
+    <description>Recent content in Unix on Keep Moving</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 02 Dec 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://sanghunka.github.io/tags/unix/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[python]cat을 이용해서 stdin 인풋 주기</title>
+      <link>https://sanghunka.github.io/2017/12/pythoncat%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%B4%EC%84%9C-stdin-%EC%9D%B8%ED%92%8B-%EC%A3%BC%EA%B8%B0/</link>
+      <pubDate>Sat, 02 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://sanghunka.github.io/2017/12/pythoncat%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%B4%EC%84%9C-stdin-%EC%9D%B8%ED%92%8B-%EC%A3%BC%EA%B8%B0/</guid>
+      <description>&lt;p&gt;&lt;code&gt;cat iris.txt | python test.py&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

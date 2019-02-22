@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hue on Keep Moving</title>
+    <link>https://sanghunka.github.io/tags/hue/</link>
+    <description>Recent content in Hue on Keep Moving</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 02 Dec 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://sanghunka.github.io/tags/hue/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MaxOS Hue 설치</title>
+      <link>https://sanghunka.github.io/2017/12/maxos-hue-%EC%84%A4%EC%B9%98/</link>
+      <pubDate>Sat, 02 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://sanghunka.github.io/2017/12/maxos-hue-%EC%84%A4%EC%B9%98/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;메뉴얼이 잘 되어있습니다.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

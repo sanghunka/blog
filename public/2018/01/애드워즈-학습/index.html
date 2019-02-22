@@ -1,0 +1,922 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.3-BETA">
+    <title>애드워즈 학습</title>
+    <meta name="author" content="Sanghun Kang">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="https://sanghunka.github.io/favicon-btc.png">
+    
+
+    
+    <meta name="description" content="강의 1: 온라인 광고의 가치에 대한 이해 이 모듈에서 학습할 내용
+ 온라인 광고 및 애드워즈의 장점 Google의 광고 네트워크 애드워즈의 작동 원리  1.1 온라인 광고 및 애드워즈의 장점  광고 타겟팅  키워드 광고 위치 연령,위치,언어 요일,시간대,게재빈도 기기  비용관리  월, 일, 또는 광고 단위로 지출 비용 설정 가능  광고 효과 측정 캠페인 관리  MCC, 애드워즈 에디터등   애드워즈 광고
+1.2 Google의 광고 네트워크  검색 네트워크">
+    <meta property="og:description" content="강의 1: 온라인 광고의 가치에 대한 이해 이 모듈에서 학습할 내용
+ 온라인 광고 및 애드워즈의 장점 Google의 광고 네트워크 애드워즈의 작동 원리  1.1 온라인 광고 및 애드워즈의 장점  광고 타겟팅  키워드 광고 위치 연령,위치,언어 요일,시간대,게재빈도 기기  비용관리  월, 일, 또는 광고 단위로 지출 비용 설정 가능  광고 효과 측정 캠페인 관리  MCC, 애드워즈 에디터등   애드워즈 광고
+1.2 Google의 광고 네트워크  검색 네트워크">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="애드워즈 학습">
+    <meta property="og:url" content="/2018/01/%EC%95%A0%EB%93%9C%EC%9B%8C%EC%A6%88-%ED%95%99%EC%8A%B5/">
+    <meta property="og:site_name" content="Keep Moving">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Keep Moving">
+    <meta name="twitter:description" content="강의 1: 온라인 광고의 가치에 대한 이해 이 모듈에서 학습할 내용
+ 온라인 광고 및 애드워즈의 장점 Google의 광고 네트워크 애드워즈의 작동 원리  1.1 온라인 광고 및 애드워즈의 장점  광고 타겟팅  키워드 광고 위치 연령,위치,언어 요일,시간대,게재빈도 기기  비용관리  월, 일, 또는 광고 단위로 지출 비용 설정 가능  광고 효과 측정 캠페인 관리  MCC, 애드워즈 에디터등   애드워즈 광고
+1.2 Google의 광고 네트워크  검색 네트워크">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/286acbc504a86d12987dfa5cd3782a41?s=640">
+    
+
+    
+      <meta property="og:image" content="https://pbs.twimg.com/profile_images/618952064576585733/0XNolOAa.png">
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://sanghunka.github.io/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://sanghunka.github.io/">Keep Moving</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://sanghunka.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="//www.gravatar.com/avatar/286acbc504a86d12987dfa5cd3782a41?s=90" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://sanghunka.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/286acbc504a86d12987dfa5cd3782a41?s=110" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Sanghun Kang</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>COOL</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sanghunka.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sanghunka.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sanghunka.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sanghunka.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sanghunka.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/sanghunka" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sanghunka.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      애드워즈 학습
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-01-22T00:00:00Z">
+        
+  January 22, 2018
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://sanghunka.github.io/categories/marketing">marketing</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#강의-1-온라인-광고의-가치에-대한-이해">강의 1: 온라인 광고의 가치에 대한 이해</a>
+<ul>
+<li><a href="#1-1-온라인-광고-및-애드워즈의-장점">1.1 온라인 광고 및 애드워즈의 장점</a></li>
+<li><a href="#1-2-google의-광고-네트워크">1.2 Google의 광고 네트워크</a></li>
+<li><a href="#1-3-광고가-게재될-수-있는-위치">1.3 광고가 게재될 수 있는 위치</a></li>
+<li><a href="#1-4-광고의-품질">1.4 광고의 품질</a>
+<ul>
+<li><a href="#품질평가점수와-광고-순위-이해하기">품질평가점수와 광고 순위 이해하기</a></li>
+</ul></li>
+<li><a href="#1-5-지불-금액">1.5 지불 금액</a>
+<ul>
+<li><a href="#입찰-전략-선택">입찰 전략 선택</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+
+<h2 id="강의-1-온라인-광고의-가치에-대한-이해">강의 1: 온라인 광고의 가치에 대한 이해</h2>
+
+<p>이 모듈에서 학습할 내용</p>
+
+<ul>
+<li>온라인 광고 및 애드워즈의 장점</li>
+<li>Google의 광고 네트워크</li>
+<li>애드워즈의 작동 원리</li>
+</ul>
+
+<h3 id="1-1-온라인-광고-및-애드워즈의-장점">1.1 온라인 광고 및 애드워즈의 장점</h3>
+
+<ol>
+<li>광고 타겟팅
+
+<ul>
+<li>키워드</li>
+<li>광고 위치</li>
+<li>연령,위치,언어</li>
+<li>요일,시간대,게재빈도</li>
+<li>기기</li>
+</ul></li>
+<li>비용관리
+
+<ul>
+<li>월, 일, 또는 광고 단위로 지출 비용 설정 가능</li>
+</ul></li>
+<li>광고 효과 측정</li>
+<li>캠페인 관리
+
+<ul>
+<li>MCC, 애드워즈 에디터등</li>
+</ul></li>
+</ol>
+
+<p><a href="https://support.google.com/adwords/answer/6349091?visit_id=1-636147259679206603-91880649&amp;rd=1">애드워즈 광고</a></p>
+
+<h3 id="1-2-google의-광고-네트워크">1.2 Google의 광고 네트워크</h3>
+
+<ul>
+<li><p>검색 네트워크</p>
+
+<ul>
+<li>Google 검색 사이트, 기타 Google 사이트(구글 지도, 구글 쇼핑), Google이 아닌 수백 개의 검색 파트너 사이트 등 검색결과에 광고를 게재함</li>
+<li>Google 검색결과 옆에 텍스트 광고 게재</li>
+<li>특정 제품 또는 서비스를 검색하는 고객에게 광고 게재</li>
+</ul></li>
+
+<li><p>디스플레이 네트워크</p>
+
+<ul>
+<li>Google 웹사이트(Google Finance, Gmail, Blogger, YouTube), 파트너 사이트, 모바일 사이트 및 앱 등에 광고를 게재</li>
+<li>흥미로운 광고 형식을 이용해 다양한 관심분야의 광범위한 고객에게 광고 게재</li>
+<li>브랜드 인지도 및 고객 충성도 제고</li>
+<li>고객과의 소통 강화</li>
+<li>광고를 게재할 구체적인 위치 및 잠재고객 선택</li>
+</ul></li>
+</ul>
+
+<p><a href="https://support.google.com/adwords/answer/1722047">검색 네트워크</a>
+<a href="https://support.google.com/adwords/answer/2404190">디스플레이 네트워크</a></p>
+
+<h3 id="1-3-광고가-게재될-수-있는-위치">1.3 광고가 게재될 수 있는 위치</h3>
+
+<ul>
+<li><p>검색결과 옆에 광고 게재</p>
+
+<ul>
+<li>텍스트 광고</li>
+</ul></li>
+
+<li><p>웹사이트에 광고 게재</p></li>
+
+<li><p>휴대전화에 광고 게재</p>
+
+<ul>
+<li>사용자가 휴대전화로 구글에서 검색할 때</li>
+<li>사용자가 디스플레이 네트워크 사이트를 방문할 때</li>
+</ul></li>
+
+<li><p>특정 잠재고객을 대상으로 광고 게재</p>
+
+<ul>
+<li>예.특정 위치에서 특정 언어를 구사하는 사용자</li>
+</ul></li>
+
+<li><p>디스플레이 광고 형식</p>
+
+<ul>
+<li>텍스트 광고</li>
+<li>이미지 광고</li>
+<li>리치 미디어 광고</li>
+<li>동영상 광고</li>
+</ul></li>
+</ul>
+
+<p><a href="https://support.google.com/adwords/answer/6349091?visit_id=1-636147260185011257-91880649&amp;rd=1">애드워즈의 작동 원리</a></p>
+
+<h3 id="1-4-광고의-품질">1.4 광고의 품질</h3>
+
+<h4 id="품질평가점수와-광고-순위-이해하기">품질평가점수와 광고 순위 이해하기</h4>
+
+<ul>
+<li>광고의 품질이 높으면 비용이 감소하고 광고 게재순위가 상승하는 효과가 있습니다</li>
+<li><strong>품질평가점수</strong> 는 하루 중에 특정 키워드로 실행된 광고와 방문 페이지의 예상 품질을 보여주는 기능
+
+<ul>
+<li>1~10점</li>
+<li>구성 요소</li>
+<li>예상 클릭률</li>
+<li>광고 관련성</li>
+<li>방문 페이지 만족도</li>
+<li>광고와 방문 페이지가 사용자와 관련성이 높을수록 품질평가점수가 높아지고 광고 게재순위 상승이나 CPC감소 등 광고 순위의 품질 구성요소가 개선될 가능성이 커집니다</li>
+<li>광고 품질의 전반적인 상태를 알려주기 위한 것이며, 사용자의 실제 검색어, 기기 유형, 언어 환경설정, 위치, 시간대 등의 입찰 시 요인은 고려하지 않음</li>
+</ul></li>
+<li><strong>광고 순위</strong> 는 페이지에서 광고가 게재되는 순서(광고 게재순위)를 정하는 기능
+
+<ul>
+<li>하지만 광고 순위에서는 입찰 시의 요인이 고려됨</li>
+<li>광고 순위에 따라 페이지의 광고 게재위치 또는 게재 여부 자체가 결정됨</li>
+<li>광고 입찰 경쟁에서 애드워즈는 입찰 금액, 품질평가점수의 구성요소(예상 CTR, 광고 관련성, 방문 페이지 만족도), 광고 확장 및 기타 광고 형식의 예상효과를 바탕으로 광고 순위를 계산</li>
+</ul></li>
+<li>입찰가를 높인다고 광고 게재순위가 올라가는건 아니다</li>
+<li>경쟁사의 입찰가가 더 높더라도 경쟁사보다 키워드와 광고의 관련성이 높으면 낮은 가격으로 더 높은 광고 게재순위를 얻을 수 있습니다</li>
+</ul>
+
+<p><a href="https://support.google.com/adwords/answer/2454010">품질평가점수</a>
+<a href="https://support.google.com/adwords/answer/1722122">광고등수</a></p>
+
+<h3 id="1-5-지불-금액">1.5 지불 금액</h3>
+
+<ul>
+<li>애드워즈에서는 광고주가 광고 비용을 직접 관리할 수 있으며, 최소 약정 금액은 없다. 대신 일일 예산을 설정하고 결제 방법을 선택한다</li>
+</ul>
+
+<h4 id="입찰-전략-선택">입찰 전략 선택</h4>
+
+<ul>
+<li>클릭당 비용(CPC): 광고에서 클릭을 얻고 웹사이트로 트래픽을 유도하는것이 목표이면 CPC입찰을 사용하세요</li>
+<li>1,000회 노출당비용(CPM): 광고가 게재되는 횟수인 노출수를 늘리고 브랜드 인지도를 높이는 것이 목표이면 CPM 입찰을 이용하세요. CPM 입찰은 <em>디스플레이 네트워크 캠페인</em> 에서만 사용할 수 있습니다.</li>
+<li>전환당비용(CPA):. 사용자가 광고를 클릭한 후에 웹사이트에서 특정 액션을 하는 것을 전환이라고 하는데, 이러한 전환을 늘리는 것이 목표이면 CPA 입찰을 사용하세요.</li>
+</ul>
+
+<p><a href="https://support.google.com/partners/answer/6172290?hl=ko&amp;ref_topic=6123874">https://support.google.com/partners/answer/6172290?hl=ko&amp;ref_topic=6123874</a></p>
+
+<p>메인 키워드를 앱 제목에 넣어라
+키워드를 앱설명에서 5번 반복(그 이상은 무의미)</p>
+
+<p>키워드 정할때 고려할점
+1.다운로드 연관성
+-사람들이 앱을 다운받을 목적으로 이 키워드를 검색할 것인가?
+2.키워드내 경쟁
+-당신의 앱이 이 키워드에서 랭킹 10위안에 들 수 있을까?
+3.키워드 검색량
+-실제로 얼마나 많은 사람들이 이 키워드를 검색하는가?</p>
+
+<p>*구글 플레이 랭킹 알고리즘
+별점 수: 얼마나 많은 별점을 받았는가
+별점: 별점이 얼마나 높은가
+다운로드 수
+다운로드 증가: 지난 30일동안 다운로드가 얼마나 많이 증가했는가
+삭제: 얼마나 많은 사람들이 앱을 삭제했는가
+사용빈도: 앱을 설치한 사람들이 얼마나 자주 앱을 이용하는가</p>
+
+<p>Number of ratings: how many people have rated and reviewed your app.
+Ratings: how high (or low) they are
+Amount of downloads: how many app downloads
+Downloads growth: the growth of downloads over the last 30 days
+Uninstalls: how many people uninstall the app
+Usage: frequency with which your app is used (reported by some developers)
+Links to Play Store page: “Getting people to write about your app improves your search rankings in the Play Store” (Google I/O June 2012)</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://sanghunka.github.io/tags/marketing/">marketing</a>
+
+  <a class="tag tag--primary tag--small" href="https://sanghunka.github.io/tags/google/">google</a>
+
+  <a class="tag tag--primary tag--small" href="https://sanghunka.github.io/tags/adwords/">adwords</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://sanghunka.github.io/2018/01/zsh%EC%97%90-%EC%84%A4%EC%A0%95%ED%95%B4%EB%91%94-alias%EB%A5%BC-crontab%EC%97%90-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B3%A0-%EC%8B%B6%EC%9D%84%EB%95%8C/" data-tooltip="zsh에 설정해둔 alias를 crontab에 사용하고 싶을때">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://sanghunka.github.io/2017/12/raspberrypi-stretch-with-desktop%EC%97%90%EC%84%9C-%EC%8A%A4%ED%8A%B8%EB%9D%BC%ED%8B%B0%EC%8A%A4-qt%EC%9B%94%EB%A0%9B-%EB%B9%8C%EB%93%9C%ED%95%98%EA%B8%B0/" data-tooltip="Raspberrypi stretch with desktop에서 스트라티스 qt월렛 빌드하기">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanghunka.github.io/2018/01/%EC%95%A0%EB%93%9C%EC%9B%8C%EC%A6%88-%ED%95%99%EC%8A%B5/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sanghunka.github.io/2018/01/%EC%95%A0%EB%93%9C%EC%9B%8C%EC%A6%88-%ED%95%99%EC%8A%B5/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sanghunka.github.io/2018/01/%EC%95%A0%EB%93%9C%EC%9B%8C%EC%A6%88-%ED%95%99%EC%8A%B5/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 <a href="https://github.com/sanghunka">sanghunka</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://sanghunka.github.io/2018/01/zsh%EC%97%90-%EC%84%A4%EC%A0%95%ED%95%B4%EB%91%94-alias%EB%A5%BC-crontab%EC%97%90-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B3%A0-%EC%8B%B6%EC%9D%84%EB%95%8C/" data-tooltip="zsh에 설정해둔 alias를 crontab에 사용하고 싶을때">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://sanghunka.github.io/2017/12/raspberrypi-stretch-with-desktop%EC%97%90%EC%84%9C-%EC%8A%A4%ED%8A%B8%EB%9D%BC%ED%8B%B0%EC%8A%A4-qt%EC%9B%94%EB%A0%9B-%EB%B9%8C%EB%93%9C%ED%95%98%EA%B8%B0/" data-tooltip="Raspberrypi stretch with desktop에서 스트라티스 qt월렛 빌드하기">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sanghunka.github.io/2018/01/%EC%95%A0%EB%93%9C%EC%9B%8C%EC%A6%88-%ED%95%99%EC%8A%B5/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sanghunka.github.io/2018/01/%EC%95%A0%EB%93%9C%EC%9B%8C%EC%A6%88-%ED%95%99%EC%8A%B5/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sanghunka.github.io/2018/01/%EC%95%A0%EB%93%9C%EC%9B%8C%EC%A6%88-%ED%95%99%EC%8A%B5/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsanghunka.github.io%2F2018%2F01%2F%25EC%2595%25A0%25EB%2593%259C%25EC%259B%258C%25EC%25A6%2588-%25ED%2595%2599%25EC%258A%25B5%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fsanghunka.github.io%2F2018%2F01%2F%25EC%2595%25A0%25EB%2593%259C%25EC%259B%258C%25EC%25A6%2588-%25ED%2595%2599%25EC%258A%25B5%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fsanghunka.github.io%2F2018%2F01%2F%25EC%2595%25A0%25EB%2593%259C%25EC%259B%258C%25EC%25A6%2588-%25ED%2595%2599%25EC%258A%25B5%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/286acbc504a86d12987dfa5cd3782a41?s=110" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Sanghun Kang</h4>
+    
+      <div id="about-card-bio"><strong>COOL</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Data Engineer&amp;Analyst
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        South Korea
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2018/01/zsh%EC%97%90-%EC%84%A4%EC%A0%95%ED%95%B4%EB%91%94-alias%EB%A5%BC-crontab%EC%97%90-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B3%A0-%EC%8B%B6%EC%9D%84%EB%95%8C/">
+                <h3 class="media-heading">zsh에 설정해둔 alias를 crontab에 사용하고 싶을때</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Put your functions in .zshenv.
+.zshenv is sourced on all invocations of the shell, unless the -f option is set. It should contain commands to set the command search path, plus other important environment variables. .zshenv should not contain commands that produce output or assume the shell is attached to a tty.
+.zshrc is sourced in interactive shells. It should contain commands to set up aliases, functions, options, key bindings, etc.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2018/01/%EC%95%A0%EB%93%9C%EC%9B%8C%EC%A6%88-%ED%95%99%EC%8A%B5/">
+                <h3 class="media-heading">애드워즈 학습</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">강의 1: 온라인 광고의 가치에 대한 이해 이 모듈에서 학습할 내용
+ 온라인 광고 및 애드워즈의 장점 Google의 광고 네트워크 애드워즈의 작동 원리  1.1 온라인 광고 및 애드워즈의 장점  광고 타겟팅  키워드 광고 위치 연령,위치,언어 요일,시간대,게재빈도 기기  비용관리  월, 일, 또는 광고 단위로 지출 비용 설정 가능  광고 효과 측정 캠페인 관리  MCC, 애드워즈 에디터등   애드워즈 광고
+1.2 Google의 광고 네트워크  검색 네트워크</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2017/12/raspberrypi-stretch-with-desktop%EC%97%90%EC%84%9C-%EC%8A%A4%ED%8A%B8%EB%9D%BC%ED%8B%B0%EC%8A%A4-qt%EC%9B%94%EB%A0%9B-%EB%B9%8C%EB%93%9C%ED%95%98%EA%B8%B0/">
+                <h3 class="media-heading">Raspberrypi stretch with desktop에서 스트라티스 qt월렛 빌드하기</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Guide대로 Jessie에서 하면 편합니다만 Stretch에서 하시길 원하신다면</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2017/12/airflow-6.-multi-cluster%EC%97%90%EC%84%9C-airflow-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0/">
+                <h3 class="media-heading">[airflow] 6. Multi cluster에서 airflow 실행하기</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">요약  다루는 내용  분산 인스턴스에서 각각 airflow worker를 실행하고 task를 분산해서 실행하는법 task가 실행될 worker를 명시적으로 지정하는법  테스트 환경  두 개의 Amazon EC2 Instance 사용 1번 Instance에 아래와 같이 셋팅  metadata database(postsgres) rabbitmq airflow webserver airflow worker  2번 Instance에 아래와 같이 셋팅  airflow worker    airflow configuration  1번과 2번 instance에 airflow를 설치한다. dag폴더에 동일한 파일을 넣어준다. dag폴더를 Git repository로 세팅하고 Chef, Puppet, Ansible등으로 동기화 해주는 방법도 있다.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2017/12/airflow-5.-pyspark-sample-code-on-airflow/">
+                <h3 class="media-heading">[airflow] 5. Pyspark sample code on airflow</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Airflow에서 Pyspark task 실행하기</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2017/12/airflow-5.-pyspark-sample-code-on-airflow/">
+                <h3 class="media-heading">[airflow] 5. Pyspark sample code on airflow</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Airflow에서 Pyspark task 실행하기</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2017/12/mac-ijavascript-%EC%84%A4%EC%B9%98/">
+                <h3 class="media-heading">[Mac] ijavascript 설치</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"> ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot; brew install pkg-config node zeromq sudo easy_install pip sudo pip install --upgrade pyzmq jupyter sudo npm install -g ijavascript   설치하고자 하는 가상환경에서 ijsinstall ijsnotebook으로 실행 </div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2017/12/airflow-4.-celeryexecutor-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/">
+                <h3 class="media-heading">[airflow] 4. CeleryExecutor 사용하기</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Airflow CeleryExecutor 사용하기</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2017/12/airflow-3.-localexecutor-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/">
+                <h3 class="media-heading">[airflow] 3. LocalExecutor 사용하기</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Airflow LocalExecutor 사용하기</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://sanghunka.github.io/2017/12/mac-apche-spark-%EC%84%A4%EC%B9%98/">
+                <h3 class="media-heading">[Mac] Apche Spark 설치</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Java 설치  이미 설치된 java의 경로를 찾고 싶다면 /usr/libexec/java_home 명령어를 이용하면 된다.
+ brew tap caskroom/versions brew cask search java # brew cask install java 이렇게하면 자바9가 설치됩니다. brew cask install java8   2017-12-05 현재 Spark는 Java9를 지원하지 않는다. 그러므로 java8을 설치해야한다. 아래처럼 본인의 version에 맞는 path를 .bashrc(또는 .zshrc)에 지정해준다. export JAVA_HOME=&quot;/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home&quot;  Scala 설치 brew install scala   java와 마찬가지로 본인의 version에 맞는 path를 .bashrc(또는 .</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         51 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://themes.gohugo.io/theme/hugo-tranquilpeak-theme/images/cover.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://sanghunka.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/sanghunka.github.io\/2018\/01\/%EC%95%A0%EB%93%9C%EC%9B%8C%EC%A6%88-%ED%95%99%EC%8A%B5\/';
+          
+            this.page.identifier = '\/2018\/01\/%EC%95%A0%EB%93%9C%EC%9B%8C%EC%A6%88-%ED%95%99%EC%8A%B5\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'sanghunka';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

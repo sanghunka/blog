@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Postgresql on Keep Moving</title>
+    <link>https://sanghunka.github.io/tags/postgresql/</link>
+    <description>Recent content in Postgresql on Keep Moving</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 09 Feb 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://sanghunka.github.io/tags/postgresql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>appsflyer pull api를 이용해 daily report 적재하기</title>
+      <link>https://sanghunka.github.io/2017/02/appsflyer-pull-api%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4-daily-report-%EC%A0%81%EC%9E%AC%ED%95%98%EA%B8%B0/</link>
+      <pubDate>Thu, 09 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://sanghunka.github.io/2017/02/appsflyer-pull-api%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4-daily-report-%EC%A0%81%EC%9E%AC%ED%95%98%EA%B8%B0/</guid>
+      <description>참조: appsflyer pull api 가이드
+ push api가 아닌 pull api를 사용하는 이유.
+ 앱스플라이어 이벤트를 많이 정의할수록 push api가 빈번하게 호출된다. 이는 서비스 품질 저하로 이어질 수 있음. (완벽한 분석용 DB가 따로 구축되어 있다면 상관 없다.) 그러므로 실시간 데이터 적재보다는 하루에 한번, 전일자 데이터를 적재하기로 결정했고 이런 용도에는 pull api가 적합하다.  product와 archive에 동시에 적재하는 이유.
+ 앱스플라이어에서 데이터를 무한정 제공하진 않는다. 가입한 플랜에 따라 최근 x일자 데이터만 조회가 가능하다.</description>
+    </item>
+    
+    <item>
+      <title>appsflyer pull api를 이용해 raw data 적재하기</title>
+      <link>https://sanghunka.github.io/2017/02/appsflyer-pull-api%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4-raw-data-%EC%A0%81%EC%9E%AC%ED%95%98%EA%B8%B0/</link>
+      <pubDate>Thu, 09 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://sanghunka.github.io/2017/02/appsflyer-pull-api%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4-raw-data-%EC%A0%81%EC%9E%AC%ED%95%98%EA%B8%B0/</guid>
+      <description>참조: appsflyer pull api 가이드
+ push api가 아닌 pull api를 사용하는 이유.
+ 앱스플라이어 이벤트를 많이 정의할수록 push api가 빈번하게 호출된다. 이는 서비스 품질 저하로 이어질 수 있음. (완벽한 분석용 DB가 따로 구축되어 있다면 상관 없다.) 그러므로 실시간 데이터 적재보다는 하루에 한번, 전일자 데이터를 적재하기로 결정했고 이런 용도에는 pull api가 적합하다.  product와 archive에 동시에 적재하는 이유.
+ 앱스플라이어에서 데이터를 무한정 제공하진 않는다. 가입한 플랜에 따라 최근 x일자 데이터만 조회가 가능하다.</description>
+    </item>
+    
+  </channel>
+</rss>
