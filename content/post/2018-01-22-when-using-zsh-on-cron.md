@@ -2,6 +2,8 @@
 title: "zsh에 설정해둔 alias를 crontab에 사용하고 싶을때"
 date: 2018-01-22
 metaAlignment: center
+thumbnailImagePosition: left
+thumbnailImage: https://ras-blogdb.restdb.io/media/583e8cae50ccd12d000083e1?s=o&key=1873586795825183724
 categories:
 - dev
 tags:

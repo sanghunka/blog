@@ -8,7 +8,7 @@ tags:
 - appsflyer
 - postgresql
 - data loading
-thumbnailImage: //pbs.twimg.com/profile_images/559739646804885504/7KnZfyyo.png
+thumbnailImage: https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_1531913368/appsflyer.jpg
 thumbnailImagePosition: left
 ---
 

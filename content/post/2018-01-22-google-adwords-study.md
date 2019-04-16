@@ -1,9 +1,9 @@
 ---
 title: "애드워즈 학습"
 date: 2018-01-22
-metaAlignment: center
-thumbnailImagePosition: left
-thumbnailImage: https://pbs.twimg.com/profile_images/618952064576585733/0XNolOAa.png
+# metaAlignment: center
+# thumbnailImagePosition: left
+# thumbnailImage: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Google_Ads_logo.svg/120px-Google_Ads_logo.svg.png
 categories:
 - marketing
 tags:

@@ -1,3 +1,7 @@
+---
+draft: true
+---
+
 Docker : docker run --net=host -it -p 8888:8888 image:version
 
 docker run -i -t -p 8888:8888 sanghkaang/bootcamp:0.0.3

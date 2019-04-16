@@ -1,3 +1,7 @@
+---
+draft: true
+---
+
 # Install the RabbitMQ Server
 
 - http://www.rabbitmq.com/install-homebrew.html

@@ -1,3 +1,7 @@
+---
+draft: true
+---
+
 rabbitmq-plugins enable rabbitmq_management
 sudo service rabbitmq-server start
 

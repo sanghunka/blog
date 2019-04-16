@@ -10,10 +10,8 @@ tags:
 - installation
 - pyspark
 - mac
-thumbnailImage: //www.iiitmk.ac.in/delab/img/resources/spark.jpg
+thumbnailImage: https://www.onlinebooksreview.com/uploads/blog_images/2017/11/27_file.png
 thumbnailImagePosition: left
-coverImage: https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg
-coverMeta: out
 coverSize: full
 ---
 
