@@ -6,6 +6,7 @@ date: 2014-08-15
 categories:
 - tranquilpeak-sample
 showPagination: false
+draft: true
 ---
 
 This post is used to show how a site looks if the pagination is hidden.

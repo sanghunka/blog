@@ -13,6 +13,7 @@ gallery:
 - //d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-18.jpg
 categories:
 - tranquilpeak-sample
+draft: true
 ---
 
 And here is the image gallery!

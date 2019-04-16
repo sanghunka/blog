@@ -6,6 +6,7 @@ thumbnailImage: //d1u9biwaxjngwg.cloudfront.net/cover-image-showcase/city-750.jp
 categories:
 - tranquilpeak-samples
 showTags: false
+draft: true
 ---
 
 This post is used to show how a site looks if the tag section is hidden.

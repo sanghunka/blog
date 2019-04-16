@@ -6,6 +6,7 @@ thumbnailImage: //d1u9biwaxjngwg.cloudfront.net/cover-image-showcase/city-750.jp
 categories:
 - tranquilpeak-sample
 showSocial: false
+draft: true
 ---
 
 This post is used to show how a site looks if the social section is hidden.
